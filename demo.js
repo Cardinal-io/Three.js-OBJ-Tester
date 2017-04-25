@@ -9,6 +9,7 @@ function init(){
 	scene = new THREE.Scene();
 	camera = new THREE.PerspectiveCamera(90, 1280/720, 0.1, 1000);
 /*
+	// This is a rotating cube! Destroy the /* and the opisit one to unfreeze!
 	mesh = new THREE.Mesh(
 		new THREE.BoxGeometry(1,1,1),
 		new THREE.MeshPhongMaterial({color:0xff4444, wireframe:USE_WIREFRAME})
@@ -45,37 +46,21 @@ scene.add(meshFloor);
 	light.shadow.camera.near = 0.1;
 	light.shadow.camera.far = 25;
 	scene.add(light);
-
+	
+	//MTL loading script! this is the script controlling the colors / texture of the obj files. This particular code should be changed for new models only then should you copy it!
 	var mtlLoader = new THREE.MTLLoader();
-	mtlLoader.load("tentModels/Tent_Poles_01.mtl", function(materials){
-	// mtlLoader.load("models/modularBuildings_004.mtl", function(materials){
+	mtlLoader.load("testModels/Test_01.mtl", function(materials){
 			materials.preload();
 			var objLoader = new THREE.OBJLoader();
 			objLoader.setMaterials(materials);
-
-			objLoader.load("tentModels/Tent_Poles_01.obj", function(new_mesh){
-			// objLoader.load("models/modularBuildings_004.obj", function(new_mesh){
+			//Obj loading script! copy it to make new ones and don't forget to change the position code!
+			objLoader.load("testModels/Test_01.obj", function(new_mesh){
 				  mesh = new_mesh
 					scene.add(new_mesh);
 					mesh.receiveShadow = true;
 					mesh.castShadow = true;
-					// mesh.position.set(-3)
-			});
-			objLoader.load("tentModels/Tent_Poles_01.obj", function(new_mesh){
-			// objLoader.load("models/modularBuildings_004.obj", function(new_mesh){
-				  mesh = new_mesh
-					scene.add(new_mesh);
-					mesh.receiveShadow = true;
-					mesh.castShadow = true;
-					mesh.position.set(-3,0,0)
-			});
-			objLoader.load("tentModels/Tent_Poles_01.obj", function(new_mesh){
-			// objLoader.load("models/modularBuildings_004.obj", function(new_mesh){
-				  mesh = new_mesh
-					scene.add(new_mesh);
-					mesh.receiveShadow = true;
-					mesh.castShadow = true;
-					mesh.position.set(3,0,0)
+					//position
+					// mesh.position.set(0,0,0)
 			});
 	});
 
