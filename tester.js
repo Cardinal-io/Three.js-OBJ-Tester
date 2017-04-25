@@ -9,7 +9,7 @@ function init(){
 	scene = new THREE.Scene();
 	camera = new THREE.PerspectiveCamera(90, 1280/720, 0.1, 1000);
 /*
-	// This is a rotating cube! Destroy the /* and the opisit one to unfreeze!
+	// This is a rotating cube! Destroy the /* and the opisit one to unfreeze! 
 	mesh = new THREE.Mesh(
 		new THREE.BoxGeometry(1,1,1),
 		new THREE.MeshPhongMaterial({color:0xff4444, wireframe:USE_WIREFRAME})
